@@ -1,0 +1,31 @@
+.navbar > tr, td, .active {
+    background: #005EB8;
+    color: white;
+}
+.navbar > table, tr, td{
+    background: white;
+    color: #005EB8;
+
+    border: 1px solid #005EB8;
+
+    height: 40px;
+
+}
+
+.navbar > table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+a:visited, a:link{
+    color: inherit;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+
+    border: 1px solid #005EB8;
+    background-color: #005EB8;
+    text-align: center;
+}
