@@ -1,3 +1,45 @@
 h1 {
     color: red;
 }
+
+.logo {
+    height: 50px;
+    width: 50px;
+
+    color: green;
+    border: 1px solid #005EB8;
+    background-color: #005EB8;
+    text-align: center;
+}
+
+ul > .active {
+    background: #005EB8;
+    color: white;
+}
+
+ul li{
+    display: inline;
+    background: white;
+    color: #005EB8;
+}
+
+a:visited, a:link{
+    color: inherit;
+}
+
+
+.news-container {
+    position: relative;
+    height: 75%;
+    width: 100%;
+
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid #005EB8;
+    background-color: #005EB8;
+}
+
+.news {
+    height: 100px;
+    border: 1px solid black;
+}
