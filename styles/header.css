@@ -21,12 +21,3 @@
 a:visited, a:link{
     color: inherit;
 }
-
-.logo {
-    height: 50px;
-    width: 50px;
-
-    border: 1px solid #005EB8;
-    background-color: #005EB8;
-    text-align: center;
-}

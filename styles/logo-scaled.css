@@ -1,0 +1,50 @@
+.logo-scaled-wrapper {
+    height: 120px;
+    width: 100px;
+
+    margin-bottom: 50px;
+}
+.logo-scaled-base{
+
+    position: relative;
+    height: 58.3333333%;
+    width: 70%;
+
+    border: 1px solid #005EB8;
+    background-color: #005EB8;
+    text-align: center;
+    z-index: 0;
+}
+.logo-scaled-line-top {
+    height: 20%;
+    width: 60%;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 35.6666666%;
+    top: 15%;
+    transform: rotate(-45deg);
+    z-index: 1;
+}
+.logo-scaled-line-bot {
+    height: 20%;
+    width: 45%;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 22%;
+    top: -35%;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+.logo-scaled-line-behind {
+    height: 20%;
+    width: 45%;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 46%;
+    top: -35%;
+    transform: rotate(45deg);
+    z-index: -1;
+}
