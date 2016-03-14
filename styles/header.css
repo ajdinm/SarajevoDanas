@@ -22,3 +22,15 @@
 a:visited, a:link{
     color: inherit;
 }
+
+#header {
+    width: 100;
+}
+
+#logo-cell {
+    align-content: right;
+}
+
+#header td{
+    border: none;
+}
