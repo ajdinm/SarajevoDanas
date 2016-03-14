@@ -1,0 +1,70 @@
+.news-container {
+    margin-top: 10px;
+
+}
+.news {
+    border: 1px solid #005EB8;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+.news > p {
+    padding-left: 5px;
+}
+.news-row {
+    width: 100%;
+    overflow: hidden;
+}
+
+.news-left > .img-left-cont {
+    position: relative;
+    float: left;
+
+}
+.img-left {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 150px;
+}
+
+.news-right > .img-right-cont {
+    position: relative;
+    float: right;
+}
+.img-right {
+    margin: 10px 10px 10px 10px;
+    height: 150px;
+}
+
+.news-right-half {
+    position: relative;
+    width: 49%;
+    float: right;
+}
+.news-right-half > .img-right-half-cont {
+    position: relative;
+    float: right;
+
+}
+.img-right-half {
+    height: 150px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-left: 1px;
+}
+.news-left-half {
+    position: relative;
+    width: 49%;
+    float: left;
+}
+.news-left-half > .img-left-half-cont {
+    position: relative;
+    float: left;
+}
+.img-left-half {
+    height: 150px;
+    margin-top: 8%;
+    margin-left: 3%;
+    margin-right: 10px;
+}

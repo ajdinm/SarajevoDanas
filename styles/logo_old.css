@@ -1,0 +1,42 @@
+.logo-base{
+    height: 100px;
+    width: 100px;
+
+    border: 1px solid #005EB8;
+    background-color: #005EB8;
+    text-align: center;
+    z-index: -1;
+}
+.logo-line-top {
+    height: 23px;
+    width: 74px;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 45px;
+    top: 29px;
+    transform: rotate(-45deg);
+    z-index: 1;
+}
+.logo-line-bot {
+    height: 23px;
+    width: 49px;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 33px;
+    top: -53px;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+.logo-line-behind {
+    height: 23px;
+    width: 49px;
+    background: #CE0058;
+    border: 1 px solid #CE0058;
+    position: relative;
+    left: 70px;
+    top: -40px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
