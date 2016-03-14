@@ -1,3 +1,6 @@
+.navbar {
+    height: 30px;
+}
 .navbar > tr, td, .active {
     background: #005EB8;
     color: white;
@@ -8,9 +11,7 @@
     color: #005EB8;
 
     border: 1px solid #005EB8;
-
-    height: 40px;
-
+    height: 100%;
 }
 
 .navbar > table {

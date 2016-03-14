@@ -23,8 +23,22 @@
     float: right;
 
 }
-
 .img-right {
     margin: 10px 10px 10px 10px;
     height: 150px;
+}
+
+#index-logo {
+    height: 60px;
+    width: 50px;
+}
+
+h1 {
+        text-align: right;
+}
+#index-navbar {
+}
+#index-logo .logo-scaled-line-bot {
+    left: 22%;
+    top: -37%;
 }
