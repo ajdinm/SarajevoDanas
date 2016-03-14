@@ -1,6 +1,7 @@
 .logo-scaled-wrapper {
     height: 120px;
     width: 100px;
+    transform: rotateY(180deg);
 }
 .logo-scaled-base{
 

@@ -36,7 +36,8 @@
 h1 {
         text-align: right;
 }
-#index-navbar {
+#index-header-row {
+    position: relative;
 }
 #index-logo .logo-scaled-line-bot {
     left: 22%;
