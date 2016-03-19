@@ -1,0 +1,13 @@
+ul {
+    list-style-image: url('./../images/favicon.png');
+}
+ul li a:link {
+    text-decoration: none;
+    display: list-item;
+    list-style-position: inside;
+    list-style-image:url(http://dummyimage.com/1x1/fff/fff&text=);
+}
+ul li a:hover {
+    color: #CE0058 ;
+    list-style-image:url(http://dummyimage.com/16x16/fff/000&text=->);
+}
