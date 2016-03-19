@@ -6,9 +6,9 @@
 
         <link rel="shortcut icon" type="image/png" href="./../images/favicon.png"/>
 
-        <link rel="stylesheet" type="text/css" href="./../styles/index.css">
         <link rel="stylesheet" type="text/css" href="./../styles/header.css">
         <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/stat.css">
     </head>
 
     <body>
@@ -27,20 +27,19 @@
                 </td>
             </tr>
         </table>
-        <div class="navbar">
+        <div class="navbar" id="index-navbar">
     <!--            <div class="logo"></div> -->
             <table>
                 <tr>
                     <td>
                         <a href="./../pages/index.html">
-                            Naslovnica
+                         Naslovnica
+                     </td>
+                    <td class="active">
+                            Statistika
                         </a>
                     </td>
-                    <td class="active">
-                        Statistika
-                    </td>
-                    <td>
-                        <a href="./../pages/about.html">
+                    <td> <a href="./../pages/about.html">
                             O nama
                         </a>
                     </td>
@@ -49,7 +48,47 @@
                             Kontakt
                         </a>
                     </td>
-            </tr>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table id="stat-table">
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>2013</th>
+                    <th>2014</th>
+                    <th>2015</th>
+                    <th>2016</th>
+                </tr>
+                <tr class="odd">
+                    <th class="left-border odd">Ispod 18 godina</th>
+                    <td>30%</td>
+                    <td>40%</td>
+                    <td>34%</td>
+                    <td>32%</td>
+                </tr>
+                <tr class="even">
+                    <th class="left-border even">Između 18 i 25</th>
+                    <td>47%</td>
+                    <td>45%</td>
+                    <td>53%</td>
+                    <td>53%</td>
+                </tr>
+                <tr class="odd">
+                    <th class="left-border">Između 25 i 35</th>
+                    <td>18%</td>
+                    <td>10%</td>
+                    <td>7%</td>
+                    <td>14%</td>
+                </tr>
+                <tr class="even">
+                    <th class="left-border">Stariji od 35</th>
+                    <td>5%</td>
+                    <td>5%</td>
+                    <td>6%</td>
+                    <td>1%</td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>

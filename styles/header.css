@@ -37,3 +37,12 @@ a:visited, a:link{
 #header td{
     border: none;
 }
+
+#index-logo {
+    height: 60px;
+    width: 50px;
+}
+#index-logo .logo-scaled-line-bot {
+    left: 22%;
+    top: -37%;
+}

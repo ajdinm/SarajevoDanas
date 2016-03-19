@@ -1,0 +1,55 @@
+#stat-table {
+    border:none;
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+}
+#stat-table td {
+    border:none;
+    border-right: 1px solid #005EB8;
+    height: 50px;
+}
+#stat-table th {
+    border-right: 1px solid #005EB8;
+    height: 50px;
+}
+#stat-table tr {
+    border:none;
+    border-bottom: 1px solid #005EB8;
+}
+
+#stat-table td + td {
+    border-left: 1px solid #005EB8;
+    border-bottom: 1px solid #005EB8;
+}
+#stat-table th + td {
+    border-left: 1px solid #005EB8;
+    border-bottom: 1px solid #005EB8;
+}
+#stat-table th + th {
+    border-left: 1px solid #005EB8;
+    border-bottom: 1px solid #005EB8;
+    border-top: 1px solid #005EB8;
+    background: #E4BB5B;
+    color: white;
+}
+.left-border {
+    border-left: 1px solid #005EB8;
+}
+
+.even {
+  background: #00A9E0;
+  color: white;
+}
+.even td {
+  background: #00A9E0;
+  color: white;
+}
+.odd {
+  color: #00A9E0;
+}
+.odd td {
+  color: #00A9E0;
+}
