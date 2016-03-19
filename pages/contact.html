@@ -6,7 +6,7 @@
 
         <link rel="shortcut icon" type="image/png" href="./../images/favicon.png"/>
 
-        <link rel="stylesheet" type="text/css" href="./../styles/index.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/contact.css">
         <link rel="stylesheet" type="text/css" href="./../styles/header.css">
         <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
     </head>
@@ -27,29 +27,66 @@
                 </td>
             </tr>
         </table>
-        <div class="navbar">
-    <!--            <div class="logo"></div> -->
+        <div class="navbar" id="index-navbar">
             <table>
                 <tr>
                     <td>
                         <a href="./../pages/index.html">
-                            Naslovnica
-                        </a>
-                    </td>
+                         Naslovnica
+                     </td>
                     <td>
                         <a href="./../pages/stat.html">
-                            Statistika
-                        </a>
+                        Statistika
                     </td>
                     <td>
                         <a href="./../pages/about.html">
-                            O nama
-                        </a>
+                        O nama
                     </td>
                     <td class="active">
-                        Kontakt
+                        <a>
+                            Kontakt
+                        </a>
                     </td>
-            </tr>
+                </tr>
+            </table>
+        </div>
+        <div class="form-wrapper">
+            <form>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">Ime i prezime: </label>
+                        </td>
+                        <td>
+                            <input type="text" id="name" name="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Email: </label>
+                        </td>
+                        <td>
+                            <input type="email" id="email" name="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="comment">Komentar: </label>
+                        </td>
+                        <td>
+                            <textarea id="comment" name="comment"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td class="button-cell">
+                            <button type="button">Pošalji</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </body>
 </html>
