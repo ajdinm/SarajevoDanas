@@ -49,6 +49,8 @@ function sortNews() {
         }
         if(allowed_timeframe == 0) {
             shown_news = all_news;
+            showNews();
+            return;
         }
         shown_news = all_news.filter(
             news => {
