@@ -21,6 +21,12 @@
         }
     }
 
+    function getDifferenceInSec(timestamp) {
+        var now = new Date();
+        var difference = now - timestamp;
+        return difference/1000;
+    }
+
     function getDateFromTimestamp(timestamp) {
         var now = new Date();
         var difference = now - timestamp;
