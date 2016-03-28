@@ -1,5 +1,6 @@
 window.onload = function () {
 
+    document.getElementById("news-test").innerHTML = getLeftHalfNewsHTML(news_obj);
     rewriteTimeStamps();
 
     function test() {
