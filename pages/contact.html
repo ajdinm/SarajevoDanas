@@ -9,6 +9,8 @@
         <link rel="stylesheet" type="text/css" href="./../styles/contact.css">
         <link rel="stylesheet" type="text/css" href="./../styles/header.css">
         <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
+
+        <script src="./../scripts/validation.js"></script>
     </head>
 
     <body>
@@ -58,15 +60,18 @@
                             <label for="name">Ime i prezime: </label>
                         </td>
                         <td>
-                            <input type="text" id="name" name="name">
+                            <!-- validacija: ime mora biti sacinjeno od tacno dvije rijeci, i to da obja pocinju
+                                             velikim slovom -->
+                            <input onkeyup="return checkName(this)" id="name_field" class "input-validate" type="text" on id="name" name="name"required pattern="[A-Z][a-z]* [A-Z][a-z]*">
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <!-- multiple validacija: ako je uneseno ime, ne mora mail -->
                             <label for="email">Email: </label>
                         </td>
                         <td>
-                            <input type="email" id="email" name="email">
+                            <input onkeyup="return checkMail(this)" id="email_field" type="email" id="email" name="email" required>
                         </td>
                     </tr>
                     <tr>
@@ -74,7 +79,7 @@
                             <label for="comment">Komentar: </label>
                         </td>
                         <td>
-                            <textarea id="comment" name="comment"></textarea>
+                            <textarea id="comment" name="comment" required></textarea>
                         </td>
                     </tr>
                     <tr>
