@@ -40,6 +40,7 @@
 .news-right-half {
     position: relative;
     width: 49%;
+    height: 220px;
     float: right;
 }
 .news-right-half > .img-right-half-cont {
@@ -56,6 +57,7 @@
 .news-left-half {
     position: relative;
     width: 49%;
+    height: 220px;
     float: left;
 }
 .news-left-half > .img-left-half-cont {
