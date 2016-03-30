@@ -58,7 +58,14 @@
         if(getMonths(seconds) < 1) {
             return getRelativeWeekString(toReturn, seconds);
         }
-        return new Date(seconds);
+        return getFullDateString(timestamp * 1000);
+    }
+
+    function getFullDateString(seconds) {
+        var toDisplay = new Date(seconds);
+
+        return 'Novost je objavljena ' + parseInt(toDisplay.getDay() + 1) + '.' + parseInt(toDisplay.getMonth() + 1) + '.' + toDisplay.getFullYear() + '.';
+
     }
 
     function getRelativeMinuteString(toReturn, seconds) {

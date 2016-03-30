@@ -24,11 +24,8 @@ input:required:invalid, input:focus:invalid, textarea:invalid {
   background-color: red;
 }
 input:required:valid, textarea:required:valid {
-  background-color: green;
+  background-color: white;
 }
 input:valid {
-  background-color: green;
-}
-input {
-  background-color: green;
+  background-color: white;
 }
