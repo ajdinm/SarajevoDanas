@@ -17,7 +17,7 @@
                     $img_alt = htmlentities($_GET['img_alt'], ENT_QUOTES);
                     $text = htmlentities($_GET['text'], ENT_QUOTES);
 
-                    $news_row = $img_path.','.$img_alt.','.$text;
+                    $news_row = $img_path.','.$img_alt.','.time().','.$text;
 
                     file_put_contents('./../data/test.csv', $news_row. PHP_EOL, FILE_APPEND);
                 }
