@@ -57,6 +57,11 @@
                             Login
                         </a>
                     </td>
+                    <td>
+                        <a href="./../pages/admin.php">
+                            Admin panel
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>
