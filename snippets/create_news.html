@@ -1,0 +1,34 @@
+<form action="admin.php" method="get">
+    <table id="create-news-tbl">
+        <tr>
+            <td>
+                <label for="img_path">Naziv slike: </label>
+            </td>
+            <td>
+                <input id="img_path" name="img_path">
+            </td>
+            <td>
+                <label for="img_alt">Alt slike: </label>
+            </td>
+            <td>
+                <input id="img_alt" name="img_alt">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="text">Tekst: </label>
+            </td>
+            <td colspan="3">
+                <textarea id="text" name="text"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="button-cell">
+                <button onclick="return validate_news_creation()" type="submit" name="what" value="add">Pošalji</button>
+            </td>
+        </tr>
+    </table>
+</form>

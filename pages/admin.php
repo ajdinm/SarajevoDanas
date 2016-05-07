@@ -6,16 +6,16 @@
 
         <link rel="shortcut icon" type="image/png" href="./../images/favicon.png"/>
 
-        <link rel="stylesheet" type="text/css" href="./../styles/login.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/admin.css">
         <link rel="stylesheet" type="text/css" href="./../styles/header.css">
         <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
 
-        <script src="./../scripts/validation.js"></script>
+        <script src="./../scripts/admin.js"></script>
     </head>
 
     <body>
 
-        <?php include('./../scripts/login.php') ?>
+        <?php include('./../scripts/admin.php') ?>
 
         <table class="index-header" id="header">
             <tr>
@@ -51,61 +51,32 @@
                             Kontakt
                         </a>
                     </td>
-                    <td class="active">
-                        <a>
+                    <td>
+                        <a href="./../pages/login.php">
                             Login
                         </a>
                     </td>
-                    <td>
-                        <a href="./../pages/admin.php">
+                    <td class="active">
+                        <a>
                             Admin panel
                         </a>
+                    </td>
                 </tr>
             </table>
         </div>
-        <div id="admin-text">
-            <?php
-                echo $okMsg;
-                echo $logoutButton;
-            ?>
-        </div>
-        <div class="form-wrapper">
-            <form action="login.php" method="post">
-                <table id="login-table">
-                    <tr>
-                        <td>
-                            <label for="name">Username: </label>
-                        </td>
-                        <td>
-                            <input id="username_field" type="text" name="username">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="email">Password: </label>
-                        </td>
-                        <td>
-                            <input id="password_field" type="password" name="password">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td class="button-cell">
-                            <button type="submit" name="login">Pošalji</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <?php
-                                echo $nokMsg;
-                            ?>
-                        </td>
-                    </tr>
-                </table>
-
-            </form>
-        </div>
+        <form action="admin.php" method="get">
+            <table class="admin-table">
+                <tr>
+                    <td>
+                        <button type="submit" name="what" value="create">
+                            Kreiraj novost
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <?php
+            echo $form_html;
+        ?>
     </body>
 </html>

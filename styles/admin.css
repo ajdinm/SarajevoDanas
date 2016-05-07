@@ -1,0 +1,18 @@
+.admin-table td {
+    border: none;
+}
+.admin-table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#create-news-tbl td {
+    border: none;
+}
+textarea {
+   resize: vertical;
+   width: 100%;
+}
+.button-cell {
+    text-align: rigth;
+    color: red;
+}
