@@ -12,12 +12,14 @@
     </head>
 
     <body>
+
+        <?php include('./../scripts/session.php') ?>
+
         <table class="index-header" id="header">
             <tr>
                 <td>
                     <h1>SarajevoDanas - saznaj šta se dešava u tvom gradu!</h1>
-                </td>
-                <td id="logo-cell">
+                </td> <td id="logo-cell">
                     <div class="logo-scaled-wrapper" id="index-logo">
                         <div class="logo-scaled-line-top"></div>
                         <div class="logo-scaled-base"></div>
@@ -32,24 +34,35 @@
             <table>
                 <tr>
                     <td>
-                        <a href="./../pages/index.html">
+                        <a href="./../index.php">
                          Naslovnica
                      </td>
                     <td class="active">
                             Statistika
                         </a>
                     </td>
-                    <td> <a href="./../pages/about.html">
+                    <td> <a href="./../pages/about.ph">
                             O nama
                         </a>
                     </td>
                     <td>
-                        <a href="./../pages/contact.html">
+                        <a href="./../pages/contact.php">
                             Kontakt
+                        </a>
+                    </td>
+                    <td>
+                        <a href="./../pages/login.php">
+                            Login
                         </a>
                     </td>
                 </tr>
             </table>
+        </div>
+        <div id="admin-text">
+            <?php
+                echo $okMsg;
+                echo $logoutButton;
+            ?>
         </div>
         <div>
             <table id="stat-table">

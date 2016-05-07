@@ -12,7 +12,10 @@
     </head>
 
     <body>
-        <table class="index-header" id="header">
+
+        <?php include('./../scripts/session.php') ?>
+
+            <table class="index-header" id="header">
             <tr>
                 <td>
                     <h1>SarajevoDanas - saznaj šta se dešava u tvom gradu!</h1>
@@ -31,12 +34,12 @@
             <table>
                 <tr>
                     <td>
-                        <a href="./../pages/index.html">
+                        <a href="./../index.php">
                             Naslovnica
                         </a>
                     </td>
                     <td>
-                        <a href="./../pages/stat.html">
+                        <a href="./../pages/stat.php">
                             Statistika
                         </a>
                     </td>
@@ -44,21 +47,31 @@
                         O nama
                     </td>
                     <td>
-                        <a href="./../pages/contact.html">
+                        <a href="./../pages/contact.php">
                             Kontakt
+                        </a>
+                    </td>
+                    <td>
+                        <a href="./../pages/login.php">
+                            Login
                         </a>
                     </td>
                 </tr>
             </table>
         </div>
-
+        <div id="admin-text">
+            <?php
+                echo $okMsg;
+                echo $logoutButton;
+            ?>
+        </div>
         <div>
             <ul>
                 <li>
                     <a href="https://www.github.com" target="_blank">Github</a>
                 </li>
                 <li>
-                    <a href="https://www.w3schools.com" target="_blank">W3Schools</a>
+                    <a href="http://www.w3schools.com" target="_blank">W3Schools</a>
                 </li>
                 <li>
                     <a href="https://www.youtube.com" target="_blank">Youtube</a>

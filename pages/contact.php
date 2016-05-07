@@ -14,6 +14,9 @@
     </head>
 
     <body>
+
+        <?php include('./../scripts/session.php') ?>
+
         <table class="index-header" id="header">
             <tr>
                 <td>
@@ -33,15 +36,15 @@
             <table>
                 <tr>
                     <td>
-                        <a href="./../pages/index.html">
+                        <a href="./../index.php">
                          Naslovnica
                      </td>
                     <td>
-                        <a href="./../pages/stat.html">
+                        <a href="./../pages/stat.php">
                         Statistika
                     </td>
                     <td>
-                        <a href="./../pages/about.html">
+                        <a href="./../pages/about.php">
                         O nama
                     </td>
                     <td class="active">
@@ -49,8 +52,19 @@
                             Kontakt
                         </a>
                     </td>
+                    <td>
+                        <a href="./../pages/login.php">
+                            Login
+                        </a>
+                    </td>
                 </tr>
             </table>
+        </div>
+        <div id="admin-text">
+            <?php
+                echo $okMsg;
+                echo $logoutButton;
+            ?>
         </div>
         <div class="form-wrapper">
             <form>

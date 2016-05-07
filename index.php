@@ -4,20 +4,24 @@
         <meta charset="utf-8">
         <title>SarajevoDanas</title>
 
-        <link rel="shortcut icon" type="image/png" href="./../images/favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
 
-        <link rel="stylesheet" type="text/css" href="./../styles/index.css">
-        <link rel="stylesheet" type="text/css" href="./../styles/header.css">
-        <link rel="stylesheet" type="text/css" href="./../styles/news.css">
-        <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
+        <link rel="stylesheet" type="text/css" href="./styles/index.css">
+        <link rel="stylesheet" type="text/css" href="./styles/header.css">
+        <link rel="stylesheet" type="text/css" href="./styles/news.css">
+        <link rel="stylesheet" type="text/css" href="./styles/logo-scaled.css">
 
-        <script src="./../scripts/index.js"></script>
-        <script src="./../scripts/news.js"></script>
-        <script src="./../scripts/date.js"></script>
-        <script src="./../data/news_data.js"></script>
+        <script src="./scripts/index.js"></script>
+        <script src="./scripts/news.js"></script>
+        <script src="./scripts/date.js"></script>
+        <script src="./data/news_data.js"></script>
     </head>
 
     <body>
+
+        <?php include('./scripts/index.php') ?>
+
+
         <table class="index-header" id="header">
             <tr>
                 <td>
@@ -30,30 +34,39 @@
                         <div class="logo-scaled-line-bot"></div>
                         <div class="logo-scaled-line-behind"></div>
                     </div>
-                </td>
-            </tr>
-        </table>
+                </td> </tr> </table>
         <div class="navbar" id="index-navbar">
     <!--            <div class="logo"></div> -->
             <table>
                 <tr>
                     <td class="active">Naslovnica</td>
                     <td>
-                        <a href="./../pages/stat.html">
+                        <a href="./pages/stat.php">
                             Statistika
                         </a>
                     </td>
-                    <td> <a href="./../pages/about.html">
+                    <td> <a href="./pages/about.php">
                             O nama
                         </a>
                     </td>
                     <td>
-                        <a href="./../pages/contact.html">
+                        <a href="./pages/contact.php">
                             Kontakt
+                        </a>
+                    </td>
+                    <td>
+                        <a href="./pages/login.php">
+                            Login
                         </a>
                     </td>
                 </tr>
             </table>
+        </div>
+        <div id="admin-text">
+            <?php
+                echo $okMsg;
+                echo $logoutButton;
+            ?>
         </div>
         <div>
             Prikaži
@@ -63,7 +76,6 @@
                 <option value="week">novosti ove sedmice</option>
                 <option value="month">novosti ovog mjeseca</option>
             </select>
-            <intp
         </div>
         <div class="news-container">
             <div class="news-row">

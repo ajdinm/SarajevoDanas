@@ -46,3 +46,6 @@ a:visited, a:link{
     left: 22%;
     top: -37%;
 }
+#admin-text {
+    text-align: left;
+}
