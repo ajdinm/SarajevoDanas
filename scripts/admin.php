@@ -27,7 +27,7 @@
                     if ($curl_response === false) {
                         $info = curl_getinfo($curl);
                         curl_close($curl);
-                        die('error occured during curl exec. Additioanl info: ' . var_export($info));
+                        die('Doslo je greske: ' . var_export($info));
                     }
                     curl_close($curl);
                     $decoded = json_decode($curl_response, true);
@@ -37,7 +37,7 @@
                     $validateCCode = false;
                     foreach($decoded as $country) {
                         foreach($country['callingCodes'] as $code) {
-                            if(substr($phone, 0, strlen($code)) === $code) {
+                            if(substr($phone, 0, strlen($code) + 1) === '+'.$code) {
                                 $validateCCode = true;
                                 break;
                             }
@@ -47,7 +47,7 @@
                         die('Nekonzistentan kod drzave i pozivni');
                     }
 
-                    //file_put_contents('./../data/test.csv', $news_row. PHP_EOL, FILE_APPEND);
+                    file_put_contents('./../data/test.csv', $news_row. PHP_EOL, FILE_APPEND);
                 }
             }
         }
