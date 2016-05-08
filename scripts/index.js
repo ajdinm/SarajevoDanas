@@ -1,10 +1,12 @@
 var shown_news, all_news;
+var sort_criterion;
 window.onload = function () {
 /*    document.getElementById("news-test").innerHTML = getNewsHTML(all_news[0], "left-half");
     document.getElementById("news-r").innerHTML = getNewsHTML(all_news[1], "right-half");
     document.getElementById("news-lf").innerHTML = getNewsHTML(all_news[3], "left");
     document.getElementById("news-rf").innerHTML = getNewsHTML(all_news[2], "right");
 */
+    sort_criterion = compareNewsByPostTime;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         var codeOK = false;
@@ -22,8 +24,13 @@ window.onload = function () {
 function compareNewsByPostTime(news, news1) {
     return news.timestamp < news1.timestamp;
 }
+function compareNewsAlphabetically(news, news1) {
+    return news.text[0] > news1.text[0];
+}
+
 function sortNews() {
-    shown_news = shown_news.sort(compareNewsByPostTime);
+//    alert("hi");
+    shown_news = shown_news.sort(sort_criterion);
 }
     function showNews() {
         sortNews();
@@ -69,4 +76,14 @@ function sortNews() {
         );
         showNews();
         return;
+    }
+
+    function checked_ab(caller) {
+        if(caller.checked) {
+            sort_criterion = compareNewsAlphabetically;
+        }
+        else {
+            sort_criterion = compareNewsByPostTime;
+        }
+        showNews();
     }

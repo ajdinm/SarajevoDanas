@@ -81,6 +81,7 @@
                 <option value="week">novosti ove sedmice</option>
                 <option value="month">novosti ovog mjeseca</option>
             </select>
+            Sortiaj abecedno<input type="checkbox" name="alphabetical" value="no" onchange="return checked_ab(this)"><br>
         </div>
         <div class="news-container">
             <div class="news-row">
