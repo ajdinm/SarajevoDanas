@@ -16,7 +16,7 @@ window.onload = function () {
             showNews();
         }
     };
-  var url = "./../services/news.php";
+  var url = "./../api/news.php";
   xhttp.open("GET", url, true);
   xhttp.send();
 }
