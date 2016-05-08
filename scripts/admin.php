@@ -46,8 +46,7 @@
                     if(!$validateCCode) {
                         die('Nekonzistentan kod drzave i pozivni');
                     }
-
-                    file_put_contents('./../data/test.csv', $news_row. PHP_EOL, FILE_APPEND);
+                    file_put_contents('./../data/news.csv', $news_row.PHP_EOL, FILE_APPEND);
                 }
             }
         }

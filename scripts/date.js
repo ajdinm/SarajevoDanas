@@ -23,7 +23,7 @@
 
     function getDifferenceInSec(timestamp) {
         var now = new Date();
-        var difference = now - timestamp;
+        var difference = now.getTime() - timestamp;
         return difference/1000;
     }
 
@@ -37,6 +37,8 @@
     }
 
     function getRelativeTimeString(timestamp) {
+
+        timestamp *= 1000;  // php fix
         var now = new Date();
         var difference = now - timestamp;
         var seconds = difference/1000;

@@ -20,7 +20,7 @@ window.onload = function () {
                     event.returnValue = false;
                 }
               }
-            }
+          };
 
             var url = "https://restcountries.eu/rest/v1/alpha?codes=" + ccode.value;
             xhttp.open("GET", url, true);

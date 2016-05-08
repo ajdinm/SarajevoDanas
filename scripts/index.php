@@ -3,6 +3,8 @@
     if(isset($_SESSION['login']) && $_SESSION['login'] == true) {
         setOKmsg();
     }
+
+
     function getIndexLogoutButton() {
         $toReturn  = '';
         $toReturn .= '<form action="./pages/login.php" method="get">';

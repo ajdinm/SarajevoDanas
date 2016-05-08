@@ -1,14 +1,24 @@
-var shown_news;
+var shown_news, all_news;
 window.onload = function () {
 /*    document.getElementById("news-test").innerHTML = getNewsHTML(all_news[0], "left-half");
     document.getElementById("news-r").innerHTML = getNewsHTML(all_news[1], "right-half");
     document.getElementById("news-lf").innerHTML = getNewsHTML(all_news[3], "left");
     document.getElementById("news-rf").innerHTML = getNewsHTML(all_news[2], "right");
 */
-    shown_news = all_news;
-    showNews();
-
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        var codeOK = false;
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            all_news = JSON.parse(xhttp.responseText);
+            shown_news = all_news;
+            showNews();
+        }
+    };
+  var url = "./../services/news.php";
+  xhttp.open("GET", url, true);
+  xhttp.send();
 }
+
 function compareNewsByPostTime(news, news1) {
     return news.timestamp < news1.timestamp;
 }
@@ -54,7 +64,7 @@ function sortNews() {
         }
         shown_news = all_news.filter(
             news => {
-                return getDifferenceInSec(news.timestamp) <= allowed_timeframe;
+                return getDifferenceInSec(news.timestamp * 1000) <= allowed_timeframe; // * 1000 => php timestamp is in seconds
             }
         );
         showNews();
