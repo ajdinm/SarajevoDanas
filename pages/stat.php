@@ -41,7 +41,7 @@
                             Statistika
                         </a>
                     </td>
-                    <td> <a href="./../pages/about.ph">
+                    <td> <a href="./../pages/about.php">
                             O nama
                         </a>
                     </td>
