@@ -21,7 +21,7 @@
         $isOK = false;
         foreach($login_data as $user) {
             $temp = explode(',', $user);
-            if($temp[0] == $username && password_verify($password, $temp[1])) {
+                if($temp[0] == $username && password_verify($password, $temp[1])) {
                 $_SESSION['login'] = true;
                 setOKmsg();
                 $isOK = true;
