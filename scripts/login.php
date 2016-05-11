@@ -1,5 +1,6 @@
 <?php
 //    register_user('admin', 'a');
+    require './../lib/password.php';
     session_start();
     $username = $password_hash = $error = '';
     $okMsg = '';

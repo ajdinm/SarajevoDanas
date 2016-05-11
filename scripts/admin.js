@@ -27,7 +27,7 @@ window.onload = function () {
             xhttp.send();
 
         if(path.value.length == 0 || alt.value.length == 0 || text.value.length == 0) {
-//            alert('Nisu uneseni svi potrebni parametri!');
+            alert('Nisu uneseni svi potrebni parametri!');
             window.location  = "./../pages/admin.php?what=create";
             event.returnValue = false;
         }
