@@ -6,7 +6,7 @@ window.onload = function () {
     document.getElementById("news-lf").innerHTML = getNewsHTML(all_news[3], "left");
     document.getElementById("news-rf").innerHTML = getNewsHTML(all_news[2], "right");
 */
-    sort_criterion = compareNewsByPostTime;
+/*    sort_criterion = compareNewsByPostTime;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         var codeOK = false;
@@ -86,4 +86,5 @@ function sortNews() {
             sort_criterion = compareNewsByPostTime;
         }
         showNews();
-    }
+    }*/
+}

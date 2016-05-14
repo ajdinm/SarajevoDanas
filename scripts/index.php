@@ -4,6 +4,7 @@
         setOKmsg();
     }
 
+    // create news html :(
 
     function getIndexLogoutButton() {
         $toReturn  = '';
