@@ -1,12 +1,33 @@
 <?php
     session_start();
-    if(isset($_SESSION['login']) && $_SESSION['login'] == true) {
+    if(isset($_SESSION['login']) && $_SESSION['login'] == true && $_SESSION['role'] == 'admin') {
         $snippet_url = '';
         $form_url= '';
         if(isset($_GET['what'])) {
             if($_GET['what'] == 'create') {
                 $snippet_url = './../snippets/create_news.html';
                 $form_html = file_get_contents($snippet_url);
+            }
+            if($_GET['what'] == 'show') {
+
+                $id = $_GET['news_id'];
+                $service_url  = 'http://sdbanas-majdin.rhcloud.com/api/news.php';
+                $service_url .= '?id=' . $id;
+                $curl = curl_init($service_url);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                debug_to_console($service_url);
+                $curl_response = curl_exec($curl);
+                if ($curl_response === false) {
+                    $info = curl_getinfo($curl);
+                    curl_close($curl);
+                    die('Doslo je greske: ' . var_export($info));
+                }
+                curl_close($curl);
+                $decoded = json_decode($curl_response, true);
+                if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+                    die('error occured: ' . $decoded->response->errormessage);
+                }
+                $form_html = $decoded['title'];
             }
             elseif($_GET['what'] == 'add') {
                 if ($_GET['img_path'] == '' || $_GET['img_alt'] == '' || $_GET['text'] == '') {
@@ -18,7 +39,14 @@
                     $text = htmlentities($_GET['text'], ENT_QUOTES);
                     $ccode = htmlentities($_GET['coutry_code'], ENT_QUOTES);
                     $phone = htmlentities($_GET['phone'], ENT_QUOTES);
+                    $title = htmlentities($_GET['title'], ENT_QUOTES);
+                    $commentable = "0";
                     $news_row = $img_path.','.$img_alt.','.time().','.$text;
+
+                    if(isset($_GET['commentable']) && $_GET['commentable'] !=  "") {
+                        $commentable = "1";
+                    }
+                    debug_to_console($_SESSION['userID']);
 
                     $service_url = 'https://restcountries.eu/rest/v1/alpha?codes=ba';
                     $curl = curl_init($service_url);
@@ -46,7 +74,40 @@
                     if(!$validateCCode) {
                         die('Nekonzistentan kod drzave i pozivni');
                     }
-                    file_put_contents('./../data/news.csv', $news_row.PHP_EOL, FILE_APPEND);
+
+                    $service_url  = 'http://sdbanas-majdin.rhcloud.com/api/add_news.php';
+                    $service_url .= '?text=' . $text;
+                    $service_url .= '&title=' . $title;
+                    $service_url .= '&picture=' . $picture;
+                    $service_url .= '&alt=' . $alt;
+                    $service_url .= '&author=' . $_SESSION['userID'];
+                    $service_url .= '&isCommentable=' . $commentable;
+                    $curl = curl_init($service_url);
+                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                    debug_to_console($service_url);
+                    $curl_response = curl_exec($curl);
+                    if ($curl_response === false) {
+                        $info = curl_getinfo($curl);
+                        curl_close($curl);
+                        die('Doslo je greske: ' . var_export($info));
+                    }
+                    curl_close($curl);
+                    $decoded = json_decode($curl_response, true);
+                    if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+                        die('error occured: ' . $decoded->response->errormessage);
+                    }
+
+                    $msg = "";
+                    if($decoded['success'] == 'true') {
+                            $msg = "Vijest uspjesno dodana.";
+                    }
+                    else {
+                        $msg = "Doslo je do greške.";
+                    }
+                    $alert = "<script type='text/javascript'>alert('$msg');</script>";
+                    echo $alert;
+
+
                 }
             }
         }
@@ -55,7 +116,14 @@
         header('Location: ./../pages/login.php');
     }
 
-    function CallAPI($method, $url, $data = false) {
+    function debug_to_console( $data ) {
+        if ( is_array( $data ) )
+            $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+        else
+            $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+        echo $output;
+    }    function CallAPI($method, $url, $data = false) {
     $curl = curl_init();
 
     switch ($method)

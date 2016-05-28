@@ -16,20 +16,34 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        $service_url  = 'http://sdbanas-majdin.rhcloud.com/api/login.php';
+        $service_url .= '?user=' . $username . '&pass=' . $password;
+        $curl = curl_init($service_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl_response = curl_exec($curl);
+        if ($curl_response === false) {
+            $info = curl_getinfo($curl);
+            curl_close($curl);
+            die('Doslo je greske: ' . var_export($info));
+        }
+        curl_close($curl);
+        $decoded = json_decode($curl_response, true);
+        if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+            die('error occured: ' . $decoded->response->errormessage);
+        }
+
         $login_data = file("./../data/users.csv");
 
 
-        $isOK = false;
-        foreach($login_data as $user) {
-            $temp = explode(',', $user);
-                if($temp[0] == $username && password_verify($password, $temp[1])) {
+        if($decoded['success'] == 'true') {
                 $_SESSION['login'] = true;
+                $_SESSION['role'] = $decoded['role'];
+                $_SESSION['username'] = $decoded['username'];
+                $_SESSION['userID'] = $decoded['id'];
                 setOKmsg();
                 $isOK = true;
-                break;
-            }
         }
-        if(! $isOK) {
+        else {
             setNOKmsg();
         }
     }
@@ -70,7 +84,7 @@
     }
     function setOKmsg() {
         global $okMsg, $nokMsg, $logoutButton;
-        $okMsg = 'Dobro dosao, Admine!';
+        $okMsg = 'Dobro dosao, ' . $_SESSION['username'] . '!';
         $nokMsg = '';
         $logoutButton = getLogoutButton();
     }

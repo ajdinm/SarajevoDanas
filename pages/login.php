@@ -11,6 +11,8 @@
         <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
 
         <script src="./../scripts/validation.js"></script>
+        <script src="./../services/api_info.js"></script>
+        <script src="./../services/news.js"></script>
     </head>
 
     <body>

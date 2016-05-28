@@ -73,6 +73,16 @@
                         </button>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <input id="news_id" name="news_id">
+                    </td>
+                    <td>
+                        <button type="submit" name="what" value="show">
+                            Prikaži
+                        </button>
+                    </td>
+                </tr>
             </table>
         </form>
         <?php
