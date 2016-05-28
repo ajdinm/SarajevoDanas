@@ -4,11 +4,17 @@
 
     header('Content-type:application/json;charset=utf-8');
 
-    $id = $_GET['id'];
+    $title = $_GET['title'];
+    $text = $_GET['text'];
+    $picture = $_GET['picture'];
+    $alt = $_GET['alt'];
+    $timestamp = $_GET['timestamp'];
+    $author = $_GET['author'];
+    $isCommentable = $_GET['isCommentable'];
 
-    echo getNewsByID($id);
+    echo insertNews($title, $text, $picture, $alt, $timestamp, $author, $isCommentable);
 
-    function getNewsByID($id) {
+    function insertNews($title, $text, $picture, $alt, $timestamp, $author, $isCommentable) {
 
         define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
         define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT'));
@@ -19,30 +25,22 @@
         $dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
         $dbh = new PDO($dsn, DB_USER, DB_PASS);
 
-        $query  = "select n.id id, n.title title, n.text text, a.id author_id, a.username author_username, n.isCommentable isCommentable ";
-        $query .= "from news n, user a ";
-        $query .= "where n.id = :id ";
-        $query .= "and a.id = n.author_id";
+        $query  = "insert into news ";
+        $query .= "(title, text, picture, alt, timestamp, isCommentable, author_id) ";
+        $query .= "values ";
+        $query .= "(:title, :text, :picture, :alt, :timestamp, :isCommentable, :author) ";
 
         $rez = $dbh->prepare($query);
-        $rez->bindParam(':id', $id);
-        $rez->execute();
-        $data = $rez->fetchAll(PDO::FETCH_ASSOC);
-
-        if(count($data) != 1) {
-            return json_encode(array());
-        }
-
-        $data = $data[0];
+        $rez->bindParam(':title', $title);
+        $rez->bindParam(':text', $text);
+        $rez->bindParam(':picture', $picture);
+        $rez->bindParam(':alt', $alt);
+        $rez->bindParam(':timestamp', $timestamp);
+        $rez->bindParam(':isCommentable', $isCommentable);
+        $rez->bindParam(':author', $author);
 
         $toReturn = array();
-        $toReturn['id'] = $data['id'];
-        $toReturn['title'] = $data['title'];
-        $toReturn['isCommentable'] = $data['isCommentable'];
-        $toReturn['author'] = array();
-        $toReturn['author']['id'] = $data['author_id'];
-        $toReturn['author']['username'] = $data['author_username'];
-        $toReturn['comments'] = getNewsCommentsByID((int)$toReturn['id']);
+        $toReturn['success'] = $rez->execute();
 
         return json_encode($toReturn);
     }

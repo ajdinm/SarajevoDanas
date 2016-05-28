@@ -4,8 +4,8 @@
 
     header('Content-type:application/json;charset=utf-8');
 
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
+    $user = $_GET['user'];
+    $pass = $_GET['pass'];
 
     echo checkLogin($user, $pass);
 
@@ -61,7 +61,7 @@ function getUnreadNews($author_id) {
         $dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
         $dbh = new PDO($dsn, DB_USER, DB_PASS);
 
-        $query  = "select n.id id, n.title title, count(distinct n.id) count ";
+        $query  = "select n.id id, n.title title, count(*) count ";
         $query .= "from news n, news_comment nc ";
         $query .= "where nc.news_id = n.id ";
         $query .= "and nc.isRead = 0 ";
@@ -88,16 +88,7 @@ function getReadNews($author_id) {
 
         $dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
         $dbh = new PDO($dsn, DB_USER, DB_PASS);
-/*
-        $query  = "select n.id id, n.title title ";
-        $query .= "from news n ";
-        $query .= "where n.id not in ";
-        $query  = "(select n1.id ";
-        $query .= "from news n1, news_comment nc ";
-        $query .= "where nc.news_id = n1.id ";
-        $query .= "and nc.isRead = 0 ";
-        $query .= "and n1.author_id = :author_id)";
-*/
+
 
         $query  = "select n.id id, n.title title ";
         $query .= "from news n, user a ";
@@ -128,19 +119,5 @@ function getReadNews($author_id) {
     }
 */
 
-    function getNewsJson($string) {
-        $news = explode(',', $string, 4);
-
-        $toReturn = array(
-            'img' => array(
-                'src' => './../images/'.$news[0],
-                'alt' => $news[1]
-            ),
-            'timestamp' => $news[2],
-            'text' => array($news[3])
-        );
-
-        return json_encode($toReturn);
-    }
 
 ?>

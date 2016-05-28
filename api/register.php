@@ -4,11 +4,11 @@
 
     header('Content-type:application/json;charset=utf-8');
 
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $role_id = (int)$_POST['role_id'];
+    $user = $_GET['user'];
+    $pass = $_GET['pass'];
+    $name = $_GET['name'];
+    $surname = $_GET['surname'];
+    $role_id = (int)$_GET['role_id'];
 
     echo addUser($user, $pass, $name, $surname, $role_id);
 
@@ -49,6 +49,7 @@
             $toReturn['success'] = 'true';
         }
         catch(PDOException $e) {
+            echo $e->getMessage();
             $toReturn['success'] = 'false';
         }
         return json_encode($toReturn);
