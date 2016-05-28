@@ -60,7 +60,7 @@
                     </td>
                     <td>
                         <a href="./../pages/admin.php">
-                            Admin panel
+                            User panel
                         </a>
                     </td>
                 </tr>

@@ -15,7 +15,7 @@
 
     <body>
 
-        <?php include('./../scripts/admin.php') ?>
+        <?php include('./../scripts/user.php') ?>
 
         <table class="index-header" id="header">
             <tr>
@@ -64,7 +64,15 @@
                 </tr>
             </table>
         </div>
-        <form action="admin.php" method="get">
+        <br>
+        <?php
+            echo $msg;
+        ?>
+        <br>
+        <?php
+            echo $news_msg;
+        ?>
+        <form action="user.php" method="get">
             <table class="admin-table">
                 <tr>
                     <td>
@@ -72,15 +80,13 @@
                             Kreiraj novost
                         </button>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input id="news_id" name="news_id">
-                    </td>
                     <td>
                         <button type="submit" name="what" value="show">
-                            Prikaži
+                            Prikaži vijesti sa ID
                         </button>
+                    </td>
+                    <td>
+                        <input id="news_id" name="news_id">
                     </td>
                 </tr>
             </table>

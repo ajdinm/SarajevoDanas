@@ -16,6 +16,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+
         $service_url  = 'http://sdbanas-majdin.rhcloud.com/api/login.php';
         $service_url .= '?user=' . $username . '&pass=' . $password;
         $curl = curl_init($service_url);
@@ -32,18 +33,19 @@
             die('error occured: ' . $decoded->response->errormessage);
         }
 
-        $login_data = file("./../data/users.csv");
-
 
         if($decoded['success'] == 'true') {
                 $_SESSION['login'] = true;
                 $_SESSION['role'] = $decoded['role'];
+                debug_to_console($_SESSION['role']);
                 $_SESSION['username'] = $decoded['username'];
                 $_SESSION['userID'] = $decoded['id'];
+                $_SESSION['unreadNews'] = $decoded['unReadNews'];
                 setOKmsg();
                 $isOK = true;
-        }
-        else {
+                header('Location: ./../pages/user.php');
+    }
+            else {
             setNOKmsg();
         }
     }
