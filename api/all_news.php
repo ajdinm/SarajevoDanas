@@ -5,13 +5,10 @@
     header('Content-type:application/json;charset=utf-8');
     header('Access-Control-Allow-Origin: *');
 
-    $text = $_GET['text'];
-    $author = $_GET['author'];
-    $news = $_GET['news'];
 
-    echo insertNewsComment($text, $author, $news);
+    echo getNewsByID($id);
 
-    function insertNewsComment($text, $author, $news) {
+    function getNewsByID($id) {
 
         define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST'));
         define('DB_PORT',getenv('OPENSHIFT_MYSQL_DB_PORT'));
@@ -22,18 +19,33 @@
         $dsn = 'mysql:dbname='.DB_NAME.';host='.DB_HOST.';port='.DB_PORT;
         $dbh = new PDO($dsn, DB_USER, DB_PASS);
 
-        $query  = "insert into news_comment ";
-        $query .= "(text, author_id, news_id, isRead) ";
-        $query .= "values ";
-        $query .= "(:text, :author, :news, 0) ";
+        $query  = "select n.id id, n.title title, n.text text, a.id author_id, a.username author_username, n.isCommentable isCommentable, ";
+        $query .= "n.picture picture, n.alt alt, n.text text, unix_timestamp(n.timestamp) ts ";
+        $query .= "from news n, user a ";
+        $query .= "where a.id = n.author_id";
 
         $rez = $dbh->prepare($query);
-        $rez->bindParam(':text', $text);
-        $rez->bindParam(':author', $author);
-        $rez->bindParam(':news', $news);
+        $rez->bindParam(':id', $id);
+        $rez->execute();
+        $data = $rez->fetchAll(PDO::FETCH_ASSOC);
 
-        $toReturn = array();
-        $toReturn['success'] = $rez->execute();
+        $toReturn = array_map(function ($el) {
+
+                $item = array();
+                $item['id'] = $el['id'];
+                $item['text'] = $el['text'];
+                $item['timestamp'] = $el['ts'];
+                $item['img'] = array();
+                $item['img']['src'] = $el['picture'];
+                $item['img']['alt'] = $el['alt'];
+                $item['title'] = $el['title'];
+                $item['isCommentable'] = $el['isCommentable'];
+                $item['author'] = array();
+                $item['author']['id'] = $el['author_id'];
+                $item['author']['username'] = $el['author_username'];
+                $item['comments'] = getNewsCommentsByID((int)$el['id']);
+                return $item;
+        }, $data);
 
         return json_encode($toReturn);
     }
@@ -83,16 +95,16 @@
 
         $ccomments = $rez->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($data as $comment) {
-            $comment['comments'] = array();
-            foreach($ccomments as $ccomment) {
-                if($ccomment['comment_id'] == $comment['id']) {
-                    array_push($comment['comments'], $ccomment);
-                }
-            }
-            array_push($toReturn, $comment);
-        }
-        return $toReturn;
+        $data = array_map(function($comment) use ($ccomments) {
+
+            $id = $comment['id'];
+            $comment['comments'] = array_filter($ccomments, function($ccomment) use($id){
+                return strcmp($ccomment['comment_id'], $id);
+            });
+            return $comment;
+        }, $data);
+
+        return $data;
 }
 
 function addCComent($comment, $ccoments) {

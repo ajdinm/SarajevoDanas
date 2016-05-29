@@ -3,6 +3,7 @@
     require './../lib/password.php';
 
     header('Content-type:application/json;charset=utf-8');
+    header('Access-Control-Allow-Origin: *');
 
     $title = $_GET['title'];
     $text = $_GET['text'];

@@ -3,6 +3,7 @@
     require './../lib/password.php';
 
     header('Content-type:application/json;charset=utf-8');
+    header('Access-Control-Allow-Origin: *');
 
     $id = $_GET['id'];
 
@@ -38,6 +39,7 @@
         $toReturn = array();
         $toReturn['id'] = $data['id'];
         $toReturn['title'] = $data['title'];
+        $toReturn['text'] = $data['text'];
         $toReturn['isCommentable'] = $data['isCommentable'];
         $toReturn['author'] = array();
         $toReturn['author']['id'] = $data['author_id'];
@@ -91,17 +93,28 @@
         $rez->execute($ids);
 
         $ccomments = $rez->fetchAll(PDO::FETCH_ASSOC);
-
+        $toReturn = array();
+        foreach ($data as $comment) {
+            $comment['comments'] = array();
+            foreach($ccomments as $ccomment) {
+                if($ccomment['comment_id'] == $comment['id']) {
+                    array_push($comment['comments'], $ccomment);
+                }
+            }
+            array_push($toReturn, $comment);
+        }
+/*
         $data = array_map(function($comment) use ($ccomments) {
 
             $id = $comment['id'];
             $comment['comments'] = array_filter($ccomments, function($ccomment) use($id){
+                var_dump($ccomment['comment_id'] . '<< >>' . $id . '<< >> ' . $comment['text']);
                 return strcmp($ccomment['comment_id'], $id);
             });
-            return $comment;
-        }, $data);
 
-        return $data;
+            return $comment;
+        }, $data);*/
+        return $toReturn;
 }
 
 function addCComent($comment, $ccoments) {
