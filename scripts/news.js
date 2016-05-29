@@ -4,6 +4,7 @@ function getNewsHTML(news_obj, align) {
             toReturn += getDiv("img-" + align + "-cont");
                 toReturn += getImgHTML(news_obj.img, "img-" + align)
             toReturn += closeDiv();
+            toReturn += getLinkHTML(news_obj.title, "./../pages/news.php?what=show&news_id=" + news_obj.id);
             toReturn += getParagraphHTML(news_obj.text);
             toReturn += getParagraph(timestampHTML, "news-time") + closeParagraph();
     toReturn += closeDiv();
@@ -15,6 +16,10 @@ function getParagraph(text, classes) {
         classText = 'class = "' + classes + '"';
     }
     return '<p ' + classText + '>' + text;
+}
+
+function getLinkHTML(text, url) {
+    return '<a href="' + url + '">' + text + '</a>';
 }
 
 function closeParagraph() {
@@ -31,11 +36,12 @@ function getDiv(classes) {
 function closeDiv() {
     return '</div>';
 }
-function getParagraphHTML(texts) {
+function getParagraphHTML(text) {
     var toReturn = "";
-    for(i = 0; i < texts.length; i++) {
+    /*for(i = 0; i < texts.length; i++) {
         toReturn += getParagraph(texts[i], "") + closeParagraph();
-    }
+    }*/
+    toReturn += getParagraph(text, "") + closeParagraph();
     return toReturn;
 }
 /* LEGACY FUNCTIONS

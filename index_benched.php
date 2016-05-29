@@ -14,7 +14,9 @@
         <script src="./scripts/index.js"></script>
         <script src="./scripts/news.js"></script>
         <script src="./scripts/date.js"></script>
-        <script src="./data/news_data.js"></script>
+        <script src="./../services/api_info.js"></script>
+        <script src="./../services/news.js"></script>
+
     </head>
 
     <body>

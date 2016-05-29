@@ -111,7 +111,7 @@
                         die('error occured: ' . $decoded->response->errormessage);
                     }
 
-                    $msg = "";
+                    $msg = " " . $_SESSION['userID'];
                     if($decoded['success'] == 'true') {
                             $msg = "Vijest uspjesno dodana.";
                     }

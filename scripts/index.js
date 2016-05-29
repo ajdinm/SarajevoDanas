@@ -1,70 +1,77 @@
 var shown_news, all_news;
 var sort_criterion;
-window.onload = function () {
-/*    document.getElementById("news-test").innerHTML = getNewsHTML(all_news[0], "left-half");
-    document.getElementById("news-r").innerHTML = getNewsHTML(all_news[1], "right-half");
-    document.getElementById("news-lf").innerHTML = getNewsHTML(all_news[3], "left");
-    document.getElementById("news-rf").innerHTML = getNewsHTML(all_news[2], "right");
-*/
-/*    sort_criterion = compareNewsByPostTime;
+window.onload = function() {
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        var codeOK = false;
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             all_news = JSON.parse(xhttp.responseText);
             shown_news = all_news;
+            sort_criterion = compareNewsByPostTime;
             showNews();
         }
     };
-  var url = "./../api/news.php";
-  xhttp.open("GET", url, true);
-  xhttp.send();
+    xhttp.open("GET", api_info.url + "all_news.php", true);
+    xhttp.send();
 }
 
+
 function compareNewsByPostTime(news, news1) {
-    return news.timestamp < news1.timestamp;
+    return news.timestamp > news1.timestamp;
 }
+
 function compareNewsAlphabetically(news, news1) {
-    return news.text[0] > news1.text[0];
+    return news.title < news1.title;
 }
 
 function sortNews() {
-//    alert("hi");
-    shown_news = shown_news.sort(sort_criterion);
-}
+    for (var j = 0; j < shown_news.length - 1; j++) {
+        var indexMin = j;
+        for (var i = j + 1; i < shown_news.length; i++) {
+            if (shown_news[i].timestamp < shown_news[indexMin].timestamp) {
+                indexMin = i;
+            }
+        }
+            if (indexMin != j) {
+                showNews[j] = [showNews[indexMin], showNews[indexMin] = showNews[j]][0];
+            }
+        }
+        //    shown_news = shown_news.sort();
+    }
+
     function showNews() {
         sortNews();
+
         var containter = document.getElementsByClassName("news-container");
         containter[0].innerHTML = "";
         var newHTML = "";
         var layout = ['left-half', 'right-half', 'left', 'right'];
         var j = 0;
-        for(var i = 0; i < shown_news.length; i++) {
-            if(j == 0) {
+        for (var i = 0; i < shown_news.length; i++) {
+            if (j == 0) {
                 newHTML += getDiv("news-row");
             }
             newHTML += getDiv() + getNewsHTML(shown_news[i], layout[j]) + closeDiv();
-            if(j == 1) {
+            if (j == 1) {
                 newHTML += closeDiv();
             }
-            j = (j+1) % 4;
+            j = (j + 1) % 4;
         }
         containter[0].innerHTML = newHTML;
         rewriteTimeStamps();
         return;
     }
+
     function filter_news(caller) {
         var allowed_timeframe = 0; //in sec
-        if(caller.value == "day") {
+        if (caller.value == "day") {
             allowed_timeframe = 24 * 60 * 60;
-        }
-        else if(caller.value == "week") {
+        } else if (caller.value == "week") {
             allowed_timeframe = 7 * 24 * 60 * 60;
+        } else if (caller.value == "month") {
+            allowed_timeframe = 4 * 7 * 24 * 60 * 60; // assume month is 4 weeks
         }
-        else if(caller.value == "month") {
-            allowed_timeframe = 4 * 7 *24 * 60 * 60; // assume month is 4 weeks
-        }
-        if(allowed_timeframe == 0) {
+        if (allowed_timeframe == 0) {
             shown_news = all_news;
             showNews();
             return;
@@ -79,12 +86,10 @@ function sortNews() {
     }
 
     function checked_ab(caller) {
-        if(caller.checked) {
+        if (caller.checked) {
             sort_criterion = compareNewsAlphabetically;
-        }
-        else {
+        } else {
             sort_criterion = compareNewsByPostTime;
         }
         showNews();
-    }*/
-}
+    }

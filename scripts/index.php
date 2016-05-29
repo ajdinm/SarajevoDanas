@@ -4,7 +4,6 @@
         setOKmsg();
     }
 
-    // create news html :(
 
     function getIndexLogoutButton() {
         $toReturn  = '';
@@ -15,7 +14,7 @@
     }
     function setOKmsg() {
         global $okMsg, $nokMsg, $logoutButton;
-        $okMsg = 'Dobro dosao, Admine!';
+        $okMsg = 'Dobro dosao, '. $_SESSION['username'] . '!';
         $nokMsg = '';
         $logoutButton = getIndexLogoutButton();
     }
