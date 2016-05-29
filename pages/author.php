@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <title>SarajevoDanas</title>
 
-        <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
+        <link rel="shortcut icon" type="image/png" href="./../images/favicon.png"/>
 
-        <link rel="stylesheet" type="text/css" href="./styles/index.css">
-        <link rel="stylesheet" type="text/css" href="./styles/header.css">
-        <link rel="stylesheet" type="text/css" href="./styles/news.css">
-        <link rel="stylesheet" type="text/css" href="./styles/logo-scaled.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/index.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/header.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/news.css">
+        <link rel="stylesheet" type="text/css" href="./../styles/logo-scaled.css">
 
-        <script src="./scripts/index.js"></script>
-        <script src="./scripts/news.js"></script>
-        <script src="./scripts/date.js"></script>
+        <script src="./../scripts/author.js"></script>
+        <script src="./../scripts/news.js"></script>
+        <script src="./../scripts/date.js"></script>
         <script src="./../services/api_info.js"></script>
         <script src="./../services/news.js"></script>
 
@@ -21,7 +21,7 @@
 
     <body>
 
-        <?php include('./scripts/index.php') ?>
+        <?php include('./scripts/author.php') ?>
 
 
         <table class="index-header" id="header">
@@ -43,26 +43,26 @@
                 <tr>
                     <td class="active">Naslovnica</td>
                     <td>
-                        <a href="./pages/stat.php">
+                        <a href="./../pages/stat.php">
                             Statistika
                         </a>
                     </td>
-                    <td> <a href="./pages/about.php">
+                    <td> <a href="./../pages/about.php">
                             O nama
                         </a>
                     </td>
                     <td>
-                        <a href="./pages/contact.php">
+                        <a href="./../pages/contact.php">
                             Kontakt
                         </a>
                     </td>
                     <td>
-                        <a href="./pages/login.php">
+                        <a href="./../pages/login.php">
                             Login
                         </a>
                     </td>
                     <td>
-                        <a href="./pages/admin.php">
+                        <a href="./../pages/admin.php">
                             Admin panel
                         </a>
                     </td>

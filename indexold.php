@@ -11,17 +11,15 @@
         <link rel="stylesheet" type="text/css" href="./styles/news.css">
         <link rel="stylesheet" type="text/css" href="./styles/logo-scaled.css">
 
-        <script src="./scripts/index.js"></script>
+        <script src="./scripts/phpindex.js"></script>
         <script src="./scripts/news.js"></script>
         <script src="./scripts/date.js"></script>
-        <script src="./../services/api_info.js"></script>
-        <script src="./../services/news.js"></script>
-
+        <script src="./data/news_data.js"></script>
     </head>
 
     <body>
 
-        <?php include('./scripts/index.php') ?>
+        <?php include('./api/news_html.php') ?>
 
 
         <table class="index-header" id="header">
@@ -83,15 +81,13 @@
                 <option value="week">novosti ove sedmice</option>
                 <option value="month">novosti ovog mjeseca</option>
             </select>
-            Sortiaj abecedno<input type="checkbox" name="alphabetical" value="no" onchange="return checked_ab(this)"><br>
+            Sortiaj abecedno<input <?php echo $checked ?> type="checkbox" name="alphabetical" value="no" id="cb" onchange="return checked_ab(this)"><br>
         </div>
         <div class="news-container">
-            <div class="news-row">
-                <div id="news-test"></div>
-                <div id="news-r"></div>
-            </div>
-            <div id="news-lf"></div>
-            <div id="news-rf"></div>
+            <?php
+                echo $news_html;
+             ?>
+
         </div>
     </body>
 </html>

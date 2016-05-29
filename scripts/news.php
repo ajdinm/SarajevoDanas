@@ -77,14 +77,14 @@
     function getCommentHTML($comments, $news_id) {
         $toReturn = '<br>Komentari: <br>';
         foreach ($comments as $comment) {
-            $toReturn .= '<h4>' . $comment['text'] . '</h4><br>Autor: ' . '<a href="./../pages/user.php?id=' . $comment['author_id'] . '">';
+            $toReturn .= '<h4>' . $comment['text'] . '</h4><br>Autor: ' . '<a href="./../pages/author.php?id=' . $comment['author_id'] . '">';
             $toReturn .= $comment['username'] . '</a><br>';
 
             if(count($comment['comments']) > 0) {
                 $toReturn .= '<style> myp {text-indent: 50px; }</style>';
             }
             foreach ($comment['comments'] as $ccomment) {
-                $toReturn .= '<br>' . $ccomment['text'] . ', autor: ' . '<a href="./../pages/user.php?id=' . $ccomment['author_id'] . '">';
+                $toReturn .= '<br>' . $ccomment['text'] . ', autor: ' . '<a href="./../pages/author.php?id=' . $ccomment['author_id'] . '">';
                 $toReturn .= $ccomment['username'] . '</a>';
             }
             $toReturn .= "<br><br>Dodaj komentar na komentar: ";
