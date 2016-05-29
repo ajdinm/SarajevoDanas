@@ -21,7 +21,7 @@
                 }
                 $news_title = $decoded['title'];
                 $news_text = $decoded['text'] . '<br>';
-                $comment_html = getCommentHTML($decoded['comments'], $decoded['id']);
+                $comment_html = getCommentHTML($decoded['comments'], $decoded['id'], $decoded['isCommentable'] == "1");
             }
         }
         if(isset($_GET['comment']) && isset($_GET['news_id'])) {
@@ -74,7 +74,7 @@
             header('Location: ./../pages/news.php?what=show&news_id=' . $_GET['news_id']);
         }
 
-    function getCommentHTML($comments, $news_id) {
+    function getCommentHTML($comments, $news_id, $comm) {
         $toReturn = '<br>Komentari: <br>';
         foreach ($comments as $comment) {
             $toReturn .= '<h4>' . $comment['text'] . '</h4><br>Autor: ' . '<a href="./../pages/author.php?id=' . $comment['author_id'] . '">';
@@ -95,11 +95,13 @@
             $toReturn .= "</form>";
 
         }
-        $toReturn .= "<br><br>Dodaj komentar: ";
-        $toReturn .= '<form action="./news.php" method="GET"> <textarea name="comment"></textarea>';
-        $toReturn .= "<input type='hidden' name='news_id' value='" . $news_id . "'>";
-        $toReturn .= "<input type='submit' value='Komentiraj'>";
-        $toReturn .= "</form>";
+        if($comm) {
+            $toReturn .= "<br><br>Dodaj komentar: ";
+            $toReturn .= '<form action="./news.php" method="GET"> <textarea name="comment"></textarea>';
+            $toReturn .= "<input type='hidden' name='news_id' value='" . $news_id . "'>";
+            $toReturn .= "<input type='submit' value='Komentiraj'>";
+            $toReturn .= "</form>";
+        }
         return $toReturn;
     }
 
