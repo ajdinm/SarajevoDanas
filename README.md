@@ -4,3 +4,6 @@ Portal koji omoguÄ‡ava korisnicima da postave trenutne slike Sarajeva na taj naÄ
 Login data: 
   username: admin
   password: a
+
+---
+Project done for Web Techonologys course at Faculty of Electical Engineering at University of Sarajevo.
